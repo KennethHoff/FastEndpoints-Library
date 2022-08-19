@@ -7,7 +7,7 @@ public class Endpoint : EndpointWithoutRequest<Response>
         Verbs(Http.GET);
         Routes("/inventory/get-product/{ProductID}");
         AllowAnonymous();
-        ResponseCache(10);
+        ResponseCache(TimeSpan.FromSeconds(10));
     }
 
     public override Task<Response> ExecuteAsync(CancellationToken ct)

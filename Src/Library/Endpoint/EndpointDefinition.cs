@@ -207,16 +207,16 @@ public sealed class EndpointDefinition
     /// <summary>
     /// specify response caching settings for this endpoint
     /// </summary>
-    /// <param name="durationSeconds">the duration in seconds for which the response is cached</param>
+    /// <param name="duration">the duration for which the response is cached</param>
     /// <param name="location">the location where the data from a particular URL must be cached</param>
     /// <param name="noStore">specify whether the data should be stored or not</param>
     /// <param name="varyByHeader">the value for the Vary response header</param>
     /// <param name="varyByQueryKeys">the query keys to vary by</param>
-    public void ResponseCache(int durationSeconds, ResponseCacheLocation location = ResponseCacheLocation.Any, bool noStore = false, string? varyByHeader = null, string[]? varyByQueryKeys = null)
+    public void ResponseCache(TimeSpan duration, ResponseCacheLocation location = ResponseCacheLocation.Any, bool noStore = false, string? varyByHeader = null, string[]? varyByQueryKeys = null)
     {
         ResponseCacheSettings = new()
         {
-            Duration = durationSeconds,
+            Duration = duration.Seconds,
             Location = location,
             NoStore = noStore,
             VaryByHeader = varyByHeader,
